@@ -1,6 +1,5 @@
 builds:
   - id: "adns"
-    main: ./cmd/adns/main.go
     binary: adns
 
     goos:
