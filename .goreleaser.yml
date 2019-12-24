@@ -1,0 +1,21 @@
+builds:
+  - id: "adns"
+    main: ./cmd/adns/
+    binary: adns
+
+    goos:
+      - freebsd
+      - windows
+      - darwin
+      - linux
+
+
+    goarch:
+      - amd64
+      - arm
+      - arm64
+      - "386"
+
+    goarm:
+      - 6
+      - 7
