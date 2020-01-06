@@ -69,7 +69,8 @@ func (s *serveCmdOptions) RunE(cmd *cobra.Command, args []string) error {
 	p.AllowRegexMatch(`^.*\.okta\.com$`)
 	p.AllowRegexMatch(`^.*\.oktapreview\.com$`)
 	p.AllowRegexMatch(`^.*\.adobess\.com$`)
-	p.AllowRegexMatch(`.*\.digicert.com`) // OCSP and CRL
+	p.AllowRegexMatch(`.*\.digicert.com`)             // OCSP and CRL
+	p.AllowRegexMatch(`appsanywhere\.thomasmore\.be`) // internal server
 
 	p.ListenAndServe()
 
