@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net"
 
 	"github.com/meyskens/adns/pkg/proxy"
@@ -37,6 +38,7 @@ func NewServeCmd() *cobra.Command {
 }
 
 func (s *serveCmdOptions) RunE(cmd *cobra.Command, args []string) error {
+	fmt.Println("OK")
 	conn, err := net.ListenUDP("udp", &net.UDPAddr{IP: net.ParseIP(s.BindAddr), Port: s.Port})
 	if err != nil {
 		return err
@@ -69,8 +71,12 @@ func (s *serveCmdOptions) RunE(cmd *cobra.Command, args []string) error {
 	p.AllowRegexMatch(`^.*\.okta\.com$`)
 	p.AllowRegexMatch(`^.*\.oktapreview\.com$`)
 	p.AllowRegexMatch(`^.*\.adobess\.com$`)
-	p.AllowRegexMatch(`.*\.digicert.com`)             // OCSP and CRL
-	p.AllowRegexMatch(`appsanywhere\.thomasmore\.be`) // internal server
+	p.AllowRegexMatch(`.*\.digicert.com`) // OCSP and CRL
+
+	// internal servers
+	p.AllowRegexMatch(`appsanywhere\.thomasmore\.be`)
+	p.AllowRegexMatch(`s2-stream-geel\.thomasmore\.be`)
+	p.AllowRegexMatch(`myanmar\.thomasmore\.be`)
 
 	p.ListenAndServe()
 
