@@ -19,9 +19,7 @@ jobs:
         with:
           go-version: 1.13.x
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v1
-        with:
-          version: latest
-          args: release
+        run: |
+          curl -sL https://git.io/goreleaser | bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
