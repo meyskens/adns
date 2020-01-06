@@ -1,7 +1,7 @@
 builds:
   - id: "adns"
     binary: adns
-    main: ./cmd/adns/*.go
+    main: ./cmd/adns/
 
     goos:
       - freebsd
